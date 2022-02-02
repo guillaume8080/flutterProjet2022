@@ -1,5 +1,6 @@
 import 'package:app_contact/page/ajout.dart';
 import 'package:app_contact/page/list_contact.dart';
+import 'package:app_contact/page/list_logement.dart';
 import 'package:flutter/material.dart';
 
 
@@ -19,7 +20,21 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green
       ),
-      
+        onGenerateRoute: (settings){
+
+          if(settings.name == "/to_Logements"){
+
+            return MaterialPageRoute(builder: (context) =>
+
+            //settings.arguments as LatLng
+            ListLogement(settings.arguments as int)
+
+            );
+
+          }
+
+
+        },
       routes: <String , WidgetBuilder>{
 
         '/': (BuildContext context) => ListPage(),

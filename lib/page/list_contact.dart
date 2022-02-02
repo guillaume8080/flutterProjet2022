@@ -24,7 +24,6 @@ class ListPage extends StatefulWidget {
 
 class _ListPageState extends State<ListPage> {
 
-   List<Utilisateur> maListe = List.empty(growable: true);
 
   List<Ville> listeGlobal = List.empty(growable: true);
 
@@ -95,7 +94,7 @@ class _ListPageState extends State<ListPage> {
 
                  // la cree une fonction , entre les crochets , qui va appeller lauchurl
                  // onTap: ()  {_launchUrl(snapshot.data![index].content)},
-
+                    onTap: () => goToLogement(index),
 
                  child: ListTile(
                    // leading:  SizedBox(child: Image.asset('assets/img.png')),
@@ -105,13 +104,14 @@ class _ListPageState extends State<ListPage> {
                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                      children: [
                        Text(snapshot.data![index].name),
-                        Image(
-                         image: NetworkImage(snapshot.data![index].url),
-                       )
+                        SizedBox( width: 200.0, height: 200.0,
+                          child: Image(
+                           image: NetworkImage(snapshot.data![index].url),
+                       ),
+                        )
 
                      ],
-                   ),// Check l appareil photo pour changer ce champ si c est une image
-                   //subtitle: Text('${snapshot.data![index].content}')
+                   ),
 
 
 
@@ -156,11 +156,6 @@ class _ListPageState extends State<ListPage> {
                 _streamControllerListVilles.sink.add(lsVilles);
 
 
-                //  listToProvideToSink = lsVilles;
-                // Future<Ville> x =  Future.value(lsVilles);
-
-
-
               }
             }
 
@@ -169,6 +164,17 @@ class _ListPageState extends State<ListPage> {
 
     // return    Future.delayed(const Duration(seconds: 0), () => listToProvideToSink);
 
+
+  }
+
+  goToLogement(int idVille) {
+
+    Navigator.of(context).pushNamed(
+       "/to_Logements",
+
+        arguments: idVille + 1
+
+    );
 
   }
 }
