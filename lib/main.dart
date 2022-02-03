@@ -1,6 +1,8 @@
+import 'package:app_contact/BO/Logement.dart';
 import 'package:app_contact/page/ajout.dart';
 import 'package:app_contact/page/list_contact.dart';
 import 'package:app_contact/page/list_logement.dart';
+import 'package:app_contact/page/reservation_logement.dart';
 import 'package:flutter/material.dart';
 
 
@@ -28,6 +30,15 @@ class MyApp extends StatelessWidget {
 
             //settings.arguments as LatLng
             ListLogement(settings.arguments as int)
+
+            );
+
+          }else if(settings.name == "/to_Logement"){
+
+            return MaterialPageRoute(builder: (context) =>
+
+            //settings.arguments as LatLng
+            ReservationLogement(settings.arguments as Logement)
 
             );
 

@@ -25,7 +25,7 @@ class _ListLogementState extends State<ListLogement> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-        appBar: AppBar(title: const Text("liste de villes")),
+        appBar: AppBar(title: const Text("liste de logements")),
         body: _buildList()
 
     );
@@ -78,7 +78,7 @@ class _ListLogementState extends State<ListLogement> {
 
                 // la cree une fonction , entre les crochets , qui va appeller lauchurl
                 // onTap: ()  {_launchUrl(snapshot.data![index].content)},
-                //onTap: () => goToLogement(index),
+                onTap: () => goToLogement(snapshot.data![index]),
 
                 child: ListTile(
                   // leading:  SizedBox(child: Image.asset('assets/img.png')),
@@ -151,5 +151,18 @@ class _ListLogementState extends State<ListLogement> {
     );
   }
 
-  onPressed() {}
+
+
+  goToLogement(Logement log) {
+
+
+
+    Navigator.of(context).pushNamed(
+        "/to_Logement",
+
+         arguments: log
+
+    );
+
+  }
 }
